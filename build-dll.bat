@@ -1,0 +1,1 @@
+\libraries\source\ikvm-7.4.5196.0\bin\ikvmc -target:library ArtClientMonitor.jar lib\artclientlib-2.2.0.jar
