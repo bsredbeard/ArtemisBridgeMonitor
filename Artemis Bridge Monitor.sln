@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge Monitor", "Bridge Monitor\Bridge Monitor.csproj", "{63AE944C-1195-41AD-AD5B-CC3A0CCA1E26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightController", "LightController\LightController.csproj", "{A1386B2D-3C54-48A2-9160-A61221415DCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge Monitor API", "Bridge Monitor API\Bridge Monitor API.csproj", "{C4193434-F5FA-493A-8C3A-4C0E34E26383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A84E4FE5-EFC5-4328-831F-B1C9628598C2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63AE944C-1195-41AD-AD5B-CC3A0CCA1E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63AE944C-1195-41AD-AD5B-CC3A0CCA1E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63AE944C-1195-41AD-AD5B-CC3A0CCA1E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63AE944C-1195-41AD-AD5B-CC3A0CCA1E26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1386B2D-3C54-48A2-9160-A61221415DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1386B2D-3C54-48A2-9160-A61221415DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1386B2D-3C54-48A2-9160-A61221415DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1386B2D-3C54-48A2-9160-A61221415DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4193434-F5FA-493A-8C3A-4C0E34E26383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4193434-F5FA-493A-8C3A-4C0E34E26383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4193434-F5FA-493A-8C3A-4C0E34E26383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4193434-F5FA-493A-8C3A-4C0E34E26383}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,76 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Artemis.Community.BridgeMonitor.vm"
+    xmlns:local="clr-namespace:Artemis.Community.BridgeMonitor"
+    mc:Ignorable="d"
+    x:Class="Artemis.Community.BridgeMonitor.MainWindow"
+    Title="{Binding Title}"
+    SizeToContent="WidthAndHeight"
+    d:DesignHeight="350"
+    DataContext="{DynamicResource viewmodel}"
+    HorizontalAlignment="Left"
+    MinWidth="315">
+    <Window.Resources>
+        <vm:MainVm x:Key="viewmodel" />
+        <BooleanToVisibilityConverter x:Key="BoolVis"/>
+        <local:BooleanToStringConverter x:Key="StatusConverter" TrueValue="Active" FalseValue="Inactive" />
+    </Window.Resources>
+    <StackPanel>
+        <GroupBox Header="Connection Information" Margin="5" Padding="0,0,5,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Label Content="Server:" Target="{Binding ElementName=serverName, Mode=OneTime}" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="serverName" MinWidth="100" IsEnabled="{Binding CanModifyConnection}" VerticalContentAlignment="Center" Text="{Binding ServerHost}" />
+                <Label Content="Port:" Target="{Binding ElementName=portNum, Mode=OneTime}" VerticalContentAlignment="Center" />
+                <TextBox x:Name="portNum" MinWidth="25" IsEnabled="{Binding CanModifyConnection}" VerticalContentAlignment="Center" Text="{Binding ServerPort}" />
+                <Button Content="{Binding ConnectButtonText}" Command="{Binding Connect, Mode=OneWay}" Margin="15,0,0,0" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Ship Selection" Margin="5" Padding="0,0,5,0" Visibility="{Binding IsConnected, Mode=OneWay, Converter={StaticResource BoolVis}}">
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Label Content="Choose a ship:" />
+                <ComboBox ItemsSource="{Binding ShipList}" SelectedIndex="{Binding SelectedShipIndex}" />
+                <Button Content="Ready up!" Margin="15,0,0,0" Command="{Binding SetShip, Mode=OneWay}" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Ship Status" Margin="5" Padding="0,0,5,0" Visibility="{Binding MissionInProgress, Mode=OneWay, Converter={StaticResource BoolVis}}">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock" x:Key="leftCol">
+                        <Setter Property="Grid.Column" Value="0" />
+                        <Setter Property="TextAlignment" Value="Right" />
+                        <Setter Property="Padding" Value="0,0,5,0" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Shields:" Style="{DynamicResource leftCol}" />
+                <TextBlock Grid.Column="1" Text="{Binding ShieldsActive, Mode=OneWay, Converter={StaticResource StatusConverter}}" />
+                <TextBlock Grid.Row="1" Text="Reverse:" Style="{DynamicResource leftCol}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ReverseActive, Mode=OneWay, Converter={StaticResource StatusConverter}}" />
+                <TextBlock Grid.Row="2" Text="Jump countdown:" Style="{DynamicResource leftCol}"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding JumpActive, Mode=OneWay, Converter={StaticResource StatusConverter}}" />
+                <TextBlock Grid.Row="3" Text="Red Alert:" Style="{DynamicResource leftCol}"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding RedAlertActive, Mode=OneWay, Converter={StaticResource StatusConverter}}" />
+                <TextBlock Grid.Row="4" Text="Impulse:" Style="{DynamicResource leftCol}"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding ImpulseActive, Mode=OneWay, Converter={StaticResource StatusConverter}}" />
+                <TextBlock Grid.Row="5" Text="Warp:" Style="{DynamicResource leftCol}"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding WarpActive, Mode=OneWay, Converter={StaticResource StatusConverter}}" />
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</Window>
