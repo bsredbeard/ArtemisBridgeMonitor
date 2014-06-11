@@ -107,8 +107,13 @@
     </ApplicationDefinition>
     <Compile Include="ClientController.cs" />
     <Compile Include="Converters.cs" />
+    <Compile Include="Design\PluginInfoDesignProxy.cs" />
     <Compile Include="IConnectionFailed.cs" />
     <Compile Include="Options\ConnectionState.cs" />
+    <Compile Include="PluginDiscovery.cs" />
+    <Compile Include="PluginWindow.xaml.cs">
+      <DependentUpon>PluginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReliesOnAttribute.cs" />
     <Compile Include="vm\MainVm.cs" />
     <Page Include="MainWindow.xaml">
@@ -123,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PluginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -154,10 +163,6 @@
     <ProjectReference Include="..\Bridge Monitor API\Bridge Monitor API.csproj">
       <Project>{c4193434-f5fa-493a-8c3a-4c0e34e26383}</Project>
       <Name>Bridge Monitor API</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LightController\LightController.csproj">
-      <Project>{a1386b2d-3c54-48a2-9160-a61221415dcd}</Project>
-      <Name>LightController</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

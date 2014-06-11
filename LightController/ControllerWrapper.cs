@@ -15,7 +15,13 @@ namespace Artemis.Community.BridgeMonitor.LightController
         {
             _ledState = new LedDisplay();
             _controller = new StageKitController(controllerNumber);
+            ControllerNumber = controllerNumber;
         }
+
+        /// <summary>
+        /// The xbox controller port that this wrapper tried to connect to
+        /// </summary>
+        public int ControllerNumber { get; private set; }
 
         private bool match(LightColor candidate, LightColor test)
         {
@@ -93,6 +99,12 @@ namespace Artemis.Community.BridgeMonitor.LightController
             }
         }
 
+        /// <summary>
+        /// Turns the specified colors/indexes on or off
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="idx"></param>
+        /// <param name="on"></param>
         public void SetLight(LightColor color, LightIndex idx, bool on)
         {
             if (match(idx, LightIndex.One)) SetLight(color, 0, on);

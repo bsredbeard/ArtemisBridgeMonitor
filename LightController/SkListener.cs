@@ -8,13 +8,33 @@ using System.Threading.Tasks;
 
 namespace Artemis.Community.BridgeMonitor.LightController
 {
+    /// <summary>
+    /// Implements IArtemisEventListener to provide lighting effects for game actions via the Rockband Stage Kit accessory
+    /// </summary>
     public class SkListener : IArtemisEventListener, IDisposable
     {
-        ControllerWrapper _wrapper = null;
+        private ControllerWrapper _wrapper = null;
 
+        /// <summary>
+        /// Create a new StageKit listener on the given port
+        /// </summary>
+        /// <param name="controllerPort"></param>
         public SkListener(int controllerPort = 1)
         {
             _wrapper = new ControllerWrapper(controllerPort);
+        }
+
+        /// <summary>
+        /// Switch the lighting controller so it points at a different controller port
+        /// </summary>
+        /// <param name="controllerPort"></param>
+        public void ChangeControllerPort(int controllerPort)
+        {
+            if (controllerPort != _wrapper.ControllerNumber && controllerPort > 0 && controllerPort < 5)
+            {
+                ((IDisposable)_wrapper).Dispose();
+                _wrapper = new ControllerWrapper(controllerPort);
+            }
         }
 
         public void Connected()

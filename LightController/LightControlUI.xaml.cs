@@ -25,21 +25,16 @@ namespace Artemis.Community.BridgeMonitor.LightController
         public Config()
         {
             InitializeComponent();
+            PluginInfo = new BridgePluginInfo()
+            {
+                PluginName = "Stage Kit Light Controller",
+                PluginUrl = new Uri("http://www.mentalspike.com"),
+                PluginAuthor = "Bill Smith",
+                PluginVersion = new Version(0, 1)
+            };
         }
 
-        public BridgePluginInfo PluginInfo
-        {
-            get
-            {
-                return new BridgePluginInfo()
-                {
-                    PluginName = "Stage Kit Light Controller",
-                    PluginUrl = new Uri("http://www.mentalspike.com"),
-                    PluginAuthor = "Bill Smith",
-                    PluginVersion =  new Version(0, 1)
-                };
-            }
-        }
+        public BridgePluginInfo PluginInfo { get; private set; }
 
         public void Dispose()
         {

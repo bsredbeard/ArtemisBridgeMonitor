@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LightController")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("StageKit plugin for Artemis Bridge Monitor")]
+[assembly: AssemblyDescription("Provides a plugin and UI to connect a Rockband Stage Kit lighting rig up to the Artemis Bridge Monitor")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LightController")]
+[assembly: AssemblyCompany("mentalspike.com")]
+[assembly: AssemblyProduct("Artemis Bridge Monitor")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,0 +1,41 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Artemis.Community.BridgeMonitor.Design"
+    xmlns:local="clr-namespace:Artemis.Community.BridgeMonitor"
+    mc:Ignorable="d"
+    x:Class="Artemis.Community.BridgeMonitor.PluginWindow"
+    Title="{Binding PluginName}"
+    Height="Auto"
+    Width="Auto"
+    d:DesignWidth="367"
+    d:DesignHeight="338"
+    SizeToContent="WidthAndHeight"
+    d:DataContext="{d:DesignInstance Type=vm:PluginInfoDesignProxy, IsDesignTimeCreatable=True}" MinWidth="350" MinHeight="300" WindowStyle="ToolWindow" Closing="Window_Closing" Loaded="Window_Loaded"
+    >
+    <Window.Resources>
+        <local:VersionToStringConverter x:Key="versionConverter" />
+        <local:NullableVisibilityConverter x:Key="visibilityConverter" />
+    </Window.Resources>
+    <TabControl SelectedIndex="0">
+        <TabItem Header="Configuration">
+            <StackPanel x:Name="pluginHost"/>
+        </TabItem>
+        <TabItem Header="About">
+            <StackPanel Margin="10">
+                <TextBlock>Author: <Run Text="{Binding PluginAuthor}" /></TextBlock>
+                <TextBlock>Version: <Run Text="{Binding PluginVersion, Converter={StaticResource versionConverter}}" /></TextBlock>
+                <TextBlock Visibility="{Binding PluginUrl, Converter={StaticResource visibilityConverter}}">
+                    Plugin URL:
+                    <Hyperlink NavigateUri="{Binding PluginUrl}" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="{Binding PluginUrl}"/></Hyperlink>
+                </TextBlock>
+                <TextBlock Visibility="{Binding PluginLicenseUrl, Converter={StaticResource visibilityConverter}}">
+                    License URL:
+                    <Hyperlink NavigateUri="{Binding PluginLicenseUrl}" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="{Binding PluginLicenseUrl}"/></Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</Window>
